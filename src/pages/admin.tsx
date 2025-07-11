@@ -5,10 +5,41 @@ export default function AdminPage() {
   const [entries, setEntries] = useState<WaitlistEntry[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [password, setPassword] = useState('')
+  const [authError, setAuthError] = useState('')
+
+  // Admin password - in production, this should be an environment variable
+  const ADMIN_PASSWORD = process.env.NEXT_PUBLIC_ADMIN_PASSWORD || 'greenledger2024'
 
   useEffect(() => {
-    fetchEntries()
+    // Check if already authenticated in this session
+    const isAuth = sessionStorage.getItem('adminAuthenticated')
+    if (isAuth === 'true') {
+      setIsAuthenticated(true)
+      fetchEntries()
+    } else {
+      setLoading(false)
+    }
   }, [])
+
+  const handleAuth = (e: React.FormEvent) => {
+    e.preventDefault()
+    if (password === ADMIN_PASSWORD) {
+      setIsAuthenticated(true)
+      sessionStorage.setItem('adminAuthenticated', 'true')
+      setAuthError('')
+      fetchEntries()
+    } else {
+      setAuthError('Invalid password')
+    }
+  }
+
+  const handleLogout = () => {
+    setIsAuthenticated(false)
+    sessionStorage.removeItem('adminAuthenticated')
+    setEntries([])
+  }
 
   const fetchEntries = async () => {
     try {
@@ -47,6 +78,52 @@ export default function AdminPage() {
     window.URL.revokeObjectURL(url)
   }
 
+  // Show authentication form if not authenticated
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="max-w-md w-full space-y-8 p-8">
+          <div>
+            <h2 className="mt-6 text-center text-3xl font-bold text-gray-900">
+              🌱 GreenLedger Admin
+            </h2>
+            <p className="mt-2 text-center text-sm text-gray-600">
+              Enter the admin password to access the waitlist dashboard
+            </p>
+          </div>
+          <form className="mt-8 space-y-6" onSubmit={handleAuth}>
+            <div>
+              <label htmlFor="password" className="sr-only">
+                Password
+              </label>
+              <input
+                id="password"
+                name="password"
+                type="password"
+                required
+                className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-green-500 focus:border-green-500 focus:z-10 sm:text-sm"
+                placeholder="Admin password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            {authError && (
+              <div className="text-red-600 text-sm text-center">{authError}</div>
+            )}
+            <div>
+              <button
+                type="submit"
+                className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 cursor-pointer"
+              >
+                Access Admin Dashboard
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    )
+  }
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
@@ -65,7 +142,7 @@ export default function AdminPage() {
           <p className="text-red-600 text-lg">{error}</p>
           <button
             onClick={fetchEntries}
-            className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+            className="mt-4 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 cursor-pointer"
           >
             Retry
           </button>
@@ -77,17 +154,25 @@ export default function AdminPage() {
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">GreenLedger Waitlist Admin</h1>
-          <p className="mt-2 text-gray-600">
-            {entries.length} people on the waitlist
-          </p>
+        <div className="mb-8 flex items-center justify-between">
+          <div>
+            <h1 className="text-3xl font-bold text-gray-900">GreenLedger Waitlist Admin</h1>
+            <p className="mt-2 text-gray-600">
+              {entries.length} people on the waitlist
+            </p>
+          </div>
+          <button
+            onClick={handleLogout}
+            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 transition-colors cursor-pointer"
+          >
+            Logout
+          </button>
         </div>
 
         <div className="mb-6">
           <button
             onClick={exportToCsv}
-            className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors"
+            className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 transition-colors cursor-pointer"
           >
             Export to CSV
           </button>
