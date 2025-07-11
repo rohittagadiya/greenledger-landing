@@ -1,0 +1,23 @@
+<svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with rounded corners -->
+  <rect width="180" height="180" rx="40" fill="url(#gradient)"/>
+  
+  <!-- Leaf Icon -->
+  <path d="M135 60c-18 0-30 12-30 30v12c0 8-8 15-15 15s-15-7-15-15V90c0-18-12-30-30-30 0 30 20 50 50 50 30 0 40-20 40-50z" fill="white" fill-opacity="0.95"/>
+  
+  <!-- Stem -->
+  <path d="M90 105v30" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- Small accent dots -->
+  <circle cx="110" cy="70" r="3" fill="white" fill-opacity="0.6"/>
+  <circle cx="120" cy="85" r="2" fill="white" fill-opacity="0.4"/>
+  
+  <!-- Gradient Definition -->
+  <defs>
+    <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#059669;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#10b981;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#34d399;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+</svg>

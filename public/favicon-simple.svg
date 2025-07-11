@@ -1,0 +1,11 @@
+<!-- Simple 16x16 favicon version -->
+<svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="16" height="16" fill="#059669"/>
+  
+  <!-- Simple leaf shape -->
+  <path d="M8 2C5 2 3 4 3 7c0 2 1 3 2 3s2-1 2-3c0-1 0-2 1-2s1 1 1 2c0 2 1 3 2 3s2-1 2-3c0-3-2-5-5-5z" fill="white"/>
+  
+  <!-- Stem -->
+  <rect x="7.5" y="8" width="1" height="6" fill="white"/>
+</svg>
