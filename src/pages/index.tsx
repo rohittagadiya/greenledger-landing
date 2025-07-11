@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { WaitlistForm } from "@/components/waitlist-form";
@@ -494,7 +495,7 @@ export default function LandingPage() {
 			  {/* Footer */}
 			  <footer className="py-10 px-6 w-full text-center text-sm text-gray-600 bg-gradient-to-r from-emerald-50 to-green-50">
 				  <p className="mb-3 flex flex-wrap justify-center gap-4">
-					  <a href="#" className="hover:text-emerald-600 transition-colors">Privacy</a> | <a href="#" className="hover:text-emerald-600 transition-colors">Terms</a> | <a href="#" className="hover:text-emerald-600 transition-colors">Contact</a>
+					  <Link href="/privacy" className="hover:text-emerald-600 transition-colors">Privacy</Link> | <Link href="/terms" className="hover:text-emerald-600 transition-colors">Terms</Link> | <Link href="/contact" className="hover:text-emerald-600 transition-colors">Contact</Link>
 				  </p>
 				  <p className="text-gray-600">
 					  Built with ☕ by indie devs who hate spreadsheets too.
