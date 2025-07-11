@@ -46,18 +46,18 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       }
     })
 
-  } catch (error: any) {
+  } catch (error: unknown) {
     console.error('Waitlist API error:', error)
     
     // Handle Supabase not configured error
-    if (error.message?.includes('Supabase is not configured')) {
+    if (error instanceof Error && error.message?.includes('Supabase is not configured')) {
       return res.status(500).json({ 
         error: 'Database is not configured yet. Please set up your Supabase credentials.' 
       })
     }
     
     // Handle duplicate email error
-    if (error.code === '23505' && error.constraint === 'waitlist_email_key') {
+    if (error && typeof error === 'object' && 'code' in error && error.code === '23505') {
       return res.status(409).json({ 
         error: 'This email is already on our waitlist! We\'ll be in touch soon.' 
       })
