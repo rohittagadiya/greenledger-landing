@@ -59,9 +59,10 @@ export default function LandingPage() {
 			  "operatingSystem": "Web",
 			  "offers": {
 				  "@type": "Offer",
-				  "price": "2.99",
+				  "price": "1.99",
 				  "priceCurrency": "USD",
-				  "priceValidUntil": "2025-12-31"
+				  "priceValidUntil": "2025-12-31",
+				  "description": "One-time payment for complete carbon footprint report"
 			  },
 			  "provider": {
 				  "@type": "Organization",
@@ -74,8 +75,8 @@ export default function LandingPage() {
 				  "Azure sustainability reporting",
 				  "UK SDR compliance",
 				  "EU CSRD compliance",
-				  "Real-time carbon monitoring",
-				  "Automated reporting"
+				  "One-time payment model",
+				  "24-hour delivery guarantee"
 			  ]
 		  })}
 		  </script>
@@ -115,7 +116,7 @@ export default function LandingPage() {
 				  >
 					  <CloudConnectionForm>
 						  <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white cursor-pointer">
-							  Connect Cloud Account
+							  💳 Get Report for $1.99
 						  </Button>
 					  </CloudConnectionForm>
 					  <WaitlistForm>
@@ -124,7 +125,7 @@ export default function LandingPage() {
 							  variant="outline"
 							  className="px-8 py-6 text-lg border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all duration-200 cursor-pointer"
 						  >
-							  Join Waitlist
+							  📧 Get Updates
 						  </Button>
 					  </WaitlistForm>
 				  </motion.div>
@@ -382,7 +383,7 @@ export default function LandingPage() {
 						  whileInView={{ opacity: 1 }}
 						  viewport={{ once: true }}
 					  >
-						  Simple, Transparent Pricing
+						  Simple One-Time Payment
 					  </motion.h2>
 					  <motion.p
 						  className="text-xl mb-12 text-gray-600"
@@ -390,28 +391,9 @@ export default function LandingPage() {
 						  whileInView={{ opacity: 1 }}
 						  viewport={{ once: true }}
 					  >
-						  Pay less than what you&apos;d spend on one sustainability consultant meeting
+						  Get your complete carbon report for less than a coffee ☕
 					  </motion.p>
-					  <div className="grid md:grid-cols-2 gap-8">
-						  <motion.div
-							  className="p-8 bg-white rounded-lg shadow-lg border-2 border-gray-200"
-							  initial={{ opacity: 0, y: 20 }}
-							  whileInView={{ opacity: 1, y: 0 }}
-							  viewport={{ once: true }}
-						  >
-							  <h3 className="text-2xl font-bold mb-4">Starter</h3>
-							  <div className="text-4xl font-bold mb-6">$2.99<span className="text-lg text-gray-600">/month</span></div>
-							  <ul className="text-left space-y-3 mb-8">
-								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> Up to 5 cloud accounts</li>
-								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> Monthly reports</li>
-								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> SDR & CSRD compliance</li>
-								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> Email support</li>
-								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> Basic dashboard</li>
-							  </ul>
-							  <Button className="w-full" variant="outline" disabled>
-								  Get Started (Coming Soon)
-							  </Button>
-						  </motion.div>
+					  <div className="max-w-md mx-auto">
 						  <motion.div
 							  className="p-8 bg-white rounded-lg shadow-lg border-2 border-green-500 relative"
 							  initial={{ opacity: 0, y: 20 }}
@@ -419,21 +401,23 @@ export default function LandingPage() {
 							  viewport={{ once: true }}
 						  >
 							  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-emerald-500 to-green-500 text-white px-4 py-1 rounded-full text-sm">
-								  Most Popular
+								  One-Time Payment
 							  </div>
-							  <h3 className="text-2xl font-bold mb-4">Professional</h3>
-							  <div className="text-4xl font-bold mb-6">$7.99<span className="text-lg text-gray-600">/month</span></div>
+							  <h3 className="text-2xl font-bold mb-4">Carbon Report</h3>
+							  <div className="text-5xl font-bold mb-6 text-emerald-600">$1.99</div>
+							  <p className="text-lg text-gray-600 mb-6">Complete carbon footprint analysis delivered in 24 hours</p>
 							  <ul className="text-left space-y-3 mb-8">
-								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> Unlimited cloud accounts</li>
-								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> Real-time monitoring</li>
-								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> Custom reporting</li>
-								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> Priority support</li>
-								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> Advanced analytics</li>
-								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> API access</li>
+								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> Connect unlimited cloud accounts</li>
+								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> Detailed service-level breakdown</li>
+								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> UK SDR & EU CSRD compliant report</li>
+								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> Professional PDF download</li>
+								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> 24-hour delivery guarantee</li>
 							  </ul>
-							  <WaitlistForm>
-								  <Button className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white cursor-pointer">Join Waitlist</Button>
-							  </WaitlistForm>
+							  <CloudConnectionForm>
+								  <Button className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white cursor-pointer text-lg py-6">
+									  💳 Pay $1.99 & Get Report
+								  </Button>
+							  </CloudConnectionForm>
 						  </motion.div>
 					  </div>
 					  <motion.p
@@ -442,7 +426,7 @@ export default function LandingPage() {
 						  whileInView={{ opacity: 1 }}
 						  viewport={{ once: true }}
 					  >
-						  💰 <strong>ROI Guarantee:</strong> Save at least 10x your subscription cost, or your money back.
+						  💰 <strong>Money-Back Guarantee:</strong> Not satisfied? Full refund within 7 days.
 					  </motion.p>
 				  </div>
 			  </section>
@@ -473,12 +457,16 @@ export default function LandingPage() {
 								  a: "We currently support AWS, Google Cloud Platform, and Microsoft Azure. We're adding support for other providers based on customer demand."
 							  },
 							  {
-								  q: "How long does setup take?",
-								  a: "Most customers are up and running in under 5 minutes. The longest part is usually getting approval from your security team (which we're happy to help with)."
+								  q: "How long does it take to get my report?",
+								  a: "Most reports are delivered within 24 hours of connecting your cloud account. Complex setups may take up to 48 hours."
 							  },
 							  {
-								  q: "Do you offer custom integrations?",
-								  a: "Yes! Professional plan customers can access our API, and we offer custom integrations for enterprise clients."
+								  q: "What if I need another report later?",
+								  a: "Each $1.99 payment covers one complete report. If you need updated reports later, you can purchase additional reports at the same price."
+							  },
+							  {
+								  q: "Is there a refund policy?",
+								  a: "Yes! We offer a 7-day money-back guarantee. If you're not satisfied with your report, we'll provide a full refund."
 							  }
 						  ].map((faq, index) => (
 							  <motion.div
@@ -514,7 +502,7 @@ export default function LandingPage() {
 						  whileInView={{ opacity: 1 }}
 						  viewport={{ once: true }}
 					  >
-						  Join 500+ companies who&apos;ve ditched spreadsheets for smart carbon reporting
+						  Get your complete carbon report for just $1.99 — delivered in 24 hours
 					  </motion.p>
 					  <motion.div
 						  className="flex flex-col sm:flex-row gap-4 justify-center"
@@ -524,12 +512,12 @@ export default function LandingPage() {
 					  >
 						  <CloudConnectionForm>
 							  <Button size="lg" className="px-8 py-6 text-lg bg-white text-emerald-600 hover:bg-emerald-50 cursor-pointer">
-								  Start Free Trial
+								  💳 Get Report for $1.99
 							  </Button>
 						  </CloudConnectionForm>
 						  <WaitlistForm>
 							  <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2 border-white text-white hover:bg-white hover:text-emerald-600 transition-all duration-200 bg-white/10 backdrop-blur-sm cursor-pointer">
-								  Book a Demo
+								  📧 Get Updates
 							  </Button>
 						  </WaitlistForm>
 					  </motion.div>
@@ -539,7 +527,7 @@ export default function LandingPage() {
 						  whileInView={{ opacity: 1 }}
 						  viewport={{ once: true }}
 					  >
-						  🚀 Setup in 60 seconds • 💰 30-day money-back guarantee • 🔒 No long-term contracts
+						  🚀 Report delivered in 24 hours • 💰 7-day money-back guarantee • 🔒 Secure payment processing
 					  </motion.p>
 				  </div>
 			  </section>

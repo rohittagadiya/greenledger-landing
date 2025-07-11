@@ -13,10 +13,12 @@ export function CloudConnectionForm({ children }: CloudConnectionFormProps) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedProvider, setSelectedProvider] = useState<'aws' | 'gcp' | 'azure' | null>(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [step, setStep] = useState(1);
+  const [step, setStep] = useState(1); // 1: payment, 2: provider selection, 3: connection details
   const [error, setError] = useState<string | null>(null);
   const [formData, setFormData] = useState({
     userEmail: '',
+    userCard: '',
+    userName: '',
     accountId: '',
     accessKey: '',
     secretKey: '',
@@ -31,7 +33,33 @@ export function CloudConnectionForm({ children }: CloudConnectionFormProps) {
 
   const handleProviderSelect = (provider: 'aws' | 'gcp' | 'azure') => {
     setSelectedProvider(provider);
-    setStep(2);
+    setStep(3); // Go to connection details after payment
+  };
+
+  const handlePayment = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    setError(null);
+    
+    try {
+      // Validate payment form
+      if (!formData.userEmail || !formData.userName || !formData.userCard) {
+        throw new Error('Please fill in all payment details');
+      }
+
+      // Simulate payment processing
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      
+      // For demo purposes, simulate payment success
+      setStep(2); // Go to provider selection
+      
+    } catch (error) {
+      console.error('Payment failed:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Payment failed. Please try again.';
+      setError(errorMessage);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -40,9 +68,9 @@ export function CloudConnectionForm({ children }: CloudConnectionFormProps) {
     setError(null);
     
     try {
-      // Validate email
-      if (!formData.userEmail || !formData.userEmail.includes('@')) {
-        throw new Error('Please enter a valid email address');
+      // Email is already collected in payment step
+      if (!formData.userEmail) {
+        throw new Error('Email is required');
       }
 
       // Prepare credentials based on provider
@@ -77,7 +105,8 @@ export function CloudConnectionForm({ children }: CloudConnectionFormProps) {
           provider: selectedProvider,
           credentials,
           userEmail: formData.userEmail,
-          connectionName: `${selectedProvider?.toUpperCase()} Connection`
+          connectionName: `${selectedProvider?.toUpperCase()} Connection`,
+          paymentCompleted: true // Flag to indicate payment was completed
         }),
       });
 
@@ -87,8 +116,8 @@ export function CloudConnectionForm({ children }: CloudConnectionFormProps) {
         throw new Error(data.message || 'Failed to create connection');
       }
 
-      // Show success message
-      alert(`✅ Successfully connected to ${selectedProvider?.toUpperCase()}!\n\nConnection ID: ${data.connection.id}\nStatus: ${data.connection.status}\n\nWe'll start collecting your carbon data shortly and send you an email confirmation.`);
+      // Show success message with next steps
+      alert(`🎉 Success! Your ${selectedProvider?.toUpperCase()} account has been connected!\n\nConnection ID: ${data.connection.id}\n\nWhat happens next:\n✅ We'll analyze your cloud usage\n📊 Generate your carbon report\n📧 Send it to ${formData.userEmail}\n⏰ Delivery within 24 hours\n\nYou can close this window now.`);
       
       // Reset form
       setIsOpen(false);
@@ -96,6 +125,8 @@ export function CloudConnectionForm({ children }: CloudConnectionFormProps) {
       setSelectedProvider(null);
       setFormData({
         userEmail: '',
+        userCard: '',
+        userName: '',
         accountId: '',
         accessKey: '',
         secretKey: '',
@@ -118,9 +149,11 @@ export function CloudConnectionForm({ children }: CloudConnectionFormProps) {
   };
 
   const handleBack = () => {
-    if (step === 2) {
-      setStep(1);
+    if (step === 3) {
+      setStep(2); // Go back to provider selection
       setSelectedProvider(null);
+    } else if (step === 2) {
+      setStep(1); // Go back to payment
     }
   };
 
@@ -132,7 +165,7 @@ export function CloudConnectionForm({ children }: CloudConnectionFormProps) {
       <DialogContent className="sm:max-w-[600px] max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
-            🌱 Connect Your Cloud Account
+            {step === 1 ? '💳 Secure Payment' : step === 2 ? '🌱 Select Cloud Provider' : '🔗 Connect Your Account'}
           </DialogTitle>
         </DialogHeader>
         
@@ -149,6 +182,7 @@ export function CloudConnectionForm({ children }: CloudConnectionFormProps) {
           </div>
         )}
         
+        {/* Step 1: Payment */}
         {step === 1 && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -156,8 +190,110 @@ export function CloudConnectionForm({ children }: CloudConnectionFormProps) {
             className="space-y-6"
           >
             <div className="text-center">
+              <div className="w-24 h-24 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-4xl">💳</span>
+              </div>
+              <h3 className="text-xl font-semibold mb-2">Complete Carbon Report</h3>
+              <div className="text-3xl font-bold text-emerald-600 mb-2">$1.99</div>
               <p className="text-gray-600 mb-6">
-                Choose your cloud provider to start tracking carbon emissions
+                One-time payment • 24-hour delivery • Money-back guarantee
+              </p>
+            </div>
+
+            <form onSubmit={handlePayment} className="space-y-4">
+              <div>
+                <Label htmlFor="userName">Full Name</Label>
+                <Input
+                  id="userName"
+                  type="text"
+                  placeholder="John Doe"
+                  value={formData.userName}
+                  onChange={(e) => setFormData({...formData, userName: e.target.value})}
+                  required
+                />
+              </div>
+
+              <div>
+                <Label htmlFor="userEmail">Email Address</Label>
+                <Input
+                  id="userEmail"
+                  type="email"
+                  placeholder="john@company.com"
+                  value={formData.userEmail}
+                  onChange={(e) => setFormData({...formData, userEmail: e.target.value})}
+                  required
+                />
+                <p className="text-xs text-gray-500 mt-1">We&apos;ll send your report to this email</p>
+              </div>
+
+              <div>
+                <Label htmlFor="userCard">Card Number</Label>
+                <Input
+                  id="userCard"
+                  type="text"
+                  placeholder="4242 4242 4242 4242"
+                  value={formData.userCard}
+                  onChange={(e) => setFormData({...formData, userCard: e.target.value})}
+                  required
+                />
+                <p className="text-xs text-gray-500 mt-1">For demo: use 4242 4242 4242 4242</p>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <Label htmlFor="expiry">Expiry Date</Label>
+                  <Input
+                    id="expiry"
+                    type="text"
+                    placeholder="MM/YY"
+                    required
+                  />
+                </div>
+                <div>
+                  <Label htmlFor="cvc">CVC</Label>
+                  <Input
+                    id="cvc"
+                    type="text"
+                    placeholder="123"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="bg-emerald-50 p-4 rounded-lg">
+                <div className="flex items-center">
+                  <span className="text-emerald-600 mr-2">🔒</span>
+                  <p className="text-sm text-emerald-700">
+                    <strong>Secure Payment:</strong> Your payment is processed securely. We don&apos;t store your card details.
+                  </p>
+                </div>
+              </div>
+
+              <Button 
+                type="submit" 
+                disabled={isLoading}
+                className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white cursor-pointer text-lg py-6"
+              >
+                {isLoading ? 'Processing Payment...' : '💳 Pay $1.99 & Continue'}
+              </Button>
+            </form>
+          </motion.div>
+        )}
+
+        {/* Step 2: Provider Selection */}
+        {step === 2 && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="space-y-6"
+          >
+            <div className="text-center">
+              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <span className="text-2xl">✅</span>
+              </div>
+              <h3 className="text-lg font-semibold mb-2">Payment Successful!</h3>
+              <p className="text-gray-600 mb-6">
+                Now connect your cloud account to generate your carbon report
               </p>
             </div>
 
@@ -219,7 +355,7 @@ export function CloudConnectionForm({ children }: CloudConnectionFormProps) {
           </motion.div>
         )}
 
-        {step === 2 && selectedProvider === 'aws' && (
+        {step === 3 && selectedProvider === 'aws' && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -238,19 +374,6 @@ export function CloudConnectionForm({ children }: CloudConnectionFormProps) {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <Label htmlFor="userEmail">Email Address</Label>
-                <Input
-                  id="userEmail"
-                  type="email"
-                  placeholder="your.email@company.com"
-                  value={formData.userEmail}
-                  onChange={(e) => setFormData({...formData, userEmail: e.target.value})}
-                  required
-                />
-                <p className="text-xs text-gray-500 mt-1">We&apos;ll use this to send you connection updates</p>
-              </div>
-
               <div>
                 <Label htmlFor="accessKey">Access Key ID</Label>
                 <Input
@@ -308,7 +431,7 @@ export function CloudConnectionForm({ children }: CloudConnectionFormProps) {
           </motion.div>
         )}
 
-        {step === 2 && selectedProvider === 'gcp' && (
+        {step === 3 && selectedProvider === 'gcp' && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -327,19 +450,6 @@ export function CloudConnectionForm({ children }: CloudConnectionFormProps) {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <Label htmlFor="userEmail">Email Address</Label>
-                <Input
-                  id="userEmail"
-                  type="email"
-                  placeholder="your.email@company.com"
-                  value={formData.userEmail}
-                  onChange={(e) => setFormData({...formData, userEmail: e.target.value})}
-                  required
-                />
-                <p className="text-xs text-gray-500 mt-1">We&apos;ll use this to send you connection updates</p>
-              </div>
-
               <div>
                 <Label htmlFor="projectId">Project ID</Label>
                 <Input
@@ -386,7 +496,7 @@ export function CloudConnectionForm({ children }: CloudConnectionFormProps) {
           </motion.div>
         )}
 
-        {step === 2 && selectedProvider === 'azure' && (
+        {step === 3 && selectedProvider === 'azure' && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -405,19 +515,6 @@ export function CloudConnectionForm({ children }: CloudConnectionFormProps) {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <Label htmlFor="userEmail">Email Address</Label>
-                <Input
-                  id="userEmail"
-                  type="email"
-                  placeholder="your.email@company.com"
-                  value={formData.userEmail}
-                  onChange={(e) => setFormData({...formData, userEmail: e.target.value})}
-                  required
-                />
-                <p className="text-xs text-gray-500 mt-1">We&apos;ll use this to send you connection updates</p>
-              </div>
-
               <div>
                 <Label htmlFor="subscriptionId">Subscription ID</Label>
                 <Input
