@@ -19,14 +19,14 @@ export default function PrivacyPage() {
         {/* Header */}
         <header className="w-full py-6 px-6 bg-white shadow-sm">
           <div className="max-w-4xl mx-auto flex items-center justify-between">
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center cursor-pointer">
               <span className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
                 🌱 GreenLedger
               </span>
             </Link>
             <Link
               href="/"
-              className="text-gray-600 hover:text-emerald-600 transition-colors"
+              className="text-gray-600 hover:text-emerald-600 transition-colors cursor-pointer"
             >
               ← Back to Home
             </Link>
@@ -152,7 +152,7 @@ export default function PrivacyPage() {
                 <li><strong>Withdrawal:</strong> Withdraw consent at any time</li>
               </ul>
               <p className="text-gray-600 mb-4">
-                To exercise these rights, please contact us at <a href="mailto:privacy@greenledger.com" className="text-emerald-600 hover:text-emerald-700">privacy@greenledger.com</a>.
+                To exercise these rights, please contact us at <a href="mailto:privacy@greenledger.com" className="text-emerald-600 hover:text-emerald-700 cursor-pointer">privacy@greenledger.com</a>.
               </p>
             </div>
 
@@ -204,10 +204,10 @@ export default function PrivacyPage() {
               </p>
               <div className="bg-gray-50 p-4 rounded-lg">
                 <p className="text-gray-600 mb-2">
-                  <strong>Email:</strong> <a href="mailto:privacy@greenledger.com" className="text-emerald-600 hover:text-emerald-700">privacy@greenledger.com</a>
+                  <strong>Email:</strong> <a href="mailto:privacy@greenledger.com" className="text-emerald-600 hover:text-emerald-700 cursor-pointer">privacy@greenledger.com</a>
                 </p>
                 <p className="text-gray-600 mb-2">
-                  <strong>Data Protection Officer:</strong> <a href="mailto:dpo@greenledger.com" className="text-emerald-600 hover:text-emerald-700">dpo@greenledger.com</a>
+                  <strong>Data Protection Officer:</strong> <a href="mailto:dpo@greenledger.com" className="text-emerald-600 hover:text-emerald-700 cursor-pointer">dpo@greenledger.com</a>
                 </p>
                 <p className="text-gray-600">
                   <strong>Address:</strong> GreenLedger Ltd, 123 Sustainability Street, London, UK
@@ -220,9 +220,9 @@ export default function PrivacyPage() {
         {/* Footer */}
         <footer className="py-10 px-6 w-full text-center text-sm text-gray-600 bg-gradient-to-r from-emerald-50 to-green-50">
           <p className="mb-3 flex flex-wrap justify-center gap-4">
-            <Link href="/privacy" className="hover:text-emerald-600 transition-colors">Privacy</Link> | 
-            <Link href="/terms" className="hover:text-emerald-600 transition-colors">Terms</Link> | 
-            <Link href="/contact" className="hover:text-emerald-600 transition-colors">Contact</Link>
+            <Link href="/privacy" className="hover:text-emerald-600 transition-colors cursor-pointer">Privacy</Link> | 
+            <Link href="/terms" className="hover:text-emerald-600 transition-colors cursor-pointer">Terms</Link> | 
+            <Link href="/contact" className="hover:text-emerald-600 transition-colors cursor-pointer">Contact</Link>
           </p>
           <p className="text-gray-600">
             Built with ☕ by indie devs who hate spreadsheets too.

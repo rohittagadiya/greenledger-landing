@@ -19,14 +19,14 @@ export default function TermsPage() {
         {/* Header */}
         <header className="w-full py-6 px-6 bg-white shadow-sm">
           <div className="max-w-4xl mx-auto flex items-center justify-between">
-            <Link href="/" className="flex items-center">
+            <Link href="/" className="flex items-center cursor-pointer">
               <span className="text-2xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
                 🌱 GreenLedger
               </span>
             </Link>
             <Link
               href="/"
-              className="text-gray-600 hover:text-emerald-600 transition-colors"
+              className="text-gray-600 hover:text-emerald-600 transition-colors cursor-pointer"
             >
               ← Back to Home
             </Link>
@@ -93,7 +93,7 @@ export default function TermsPage() {
               <h2 className="text-2xl font-bold mb-4 text-gray-800">4. Privacy and Data Protection</h2>
               <p className="text-gray-600 mb-4">
                 Your privacy is important to us. Please review our{' '}
-                <Link href="/privacy" className="text-emerald-600 hover:text-emerald-700">
+                <Link href="/privacy" className="text-emerald-600 hover:text-emerald-700 cursor-pointer">
                   Privacy Policy
                 </Link>{' '}
                 to understand how we collect, use, and protect your information.

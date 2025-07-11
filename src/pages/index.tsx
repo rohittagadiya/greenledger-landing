@@ -64,7 +64,7 @@ export default function LandingPage() {
 						  <Button
 							  size="lg"
 							  variant="outline"
-							  className="px-8 py-6 text-lg border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all duration-200"
+							  className="px-8 py-6 text-lg border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white transition-all duration-200 cursor-pointer"
 						  >
 							  Join Waitlist
 						  </Button>
@@ -374,7 +374,7 @@ export default function LandingPage() {
 								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> API access</li>
 							  </ul>
 							  <WaitlistForm>
-								  <Button className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white">Join Waitlist</Button>
+								  <Button className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white cursor-pointer">Join Waitlist</Button>
 							  </WaitlistForm>
 						  </motion.div>
 					  </div>
@@ -476,7 +476,7 @@ export default function LandingPage() {
 							  </TooltipContent>
 						  </Tooltip>
 						  <WaitlistForm>
-							  <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2 border-white text-white hover:bg-white hover:text-emerald-600 transition-all duration-200 bg-white/10 backdrop-blur-sm">
+							  <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2 border-white text-white hover:bg-white hover:text-emerald-600 transition-all duration-200 bg-white/10 backdrop-blur-sm cursor-pointer">
 								  Book a Demo
 							  </Button>
 						  </WaitlistForm>
