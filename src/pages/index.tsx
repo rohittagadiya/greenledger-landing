@@ -341,7 +341,7 @@ export default function LandingPage() {
 							  viewport={{ once: true }}
 						  >
 							  <h3 className="text-2xl font-bold mb-4">Starter</h3>
-							  <div className="text-4xl font-bold mb-6">$299<span className="text-lg text-gray-600">/month</span></div>
+							  <div className="text-4xl font-bold mb-6">$2.99<span className="text-lg text-gray-600">/month</span></div>
 							  <ul className="text-left space-y-3 mb-8">
 								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> Up to 5 cloud accounts</li>
 								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> Monthly reports</li>
@@ -363,7 +363,7 @@ export default function LandingPage() {
 								  Most Popular
 							  </div>
 							  <h3 className="text-2xl font-bold mb-4">Professional</h3>
-							  <div className="text-4xl font-bold mb-6">$799<span className="text-lg text-gray-600">/month</span></div>
+							  <div className="text-4xl font-bold mb-6">$7.99<span className="text-lg text-gray-600">/month</span></div>
 							  <ul className="text-left space-y-3 mb-8">
 								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> Unlimited cloud accounts</li>
 								  <li className="flex items-center"><span className="text-emerald-500 mr-2">✓</span> Real-time monitoring</li>
