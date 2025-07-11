@@ -6,13 +6,21 @@ export default function ContactPage() {
   return (
     <>
       <Head>
-        <title>Contact Us – GreenLedger</title>
+        <title>Contact Us – GreenLedger | Get Carbon Reporting Support</title>
         <meta
           name="description"
-          content="Get in touch with the GreenLedger team. We're here to help with your carbon reporting needs."
+          content="Get in touch with the GreenLedger team. We're here to help with your carbon reporting needs, technical support, and partnerships."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index, follow" />
+        <meta name="keywords" content="contact GreenLedger, carbon reporting support, technical help, partnerships, customer service" />
+        <link rel="canonical" href="https://greenledger-landing.vercel.app/contact" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Contact Us – GreenLedger" />
+        <meta property="og:description" content="Get in touch with the GreenLedger team for carbon reporting support." />
+        <meta property="og:url" content="https://greenledger-landing.vercel.app/contact" />
+        <meta property="og:type" content="website" />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-b from-emerald-50 via-green-50 to-white">

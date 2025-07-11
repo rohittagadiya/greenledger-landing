@@ -6,13 +6,21 @@ export default function PrivacyPage() {
   return (
     <>
       <Head>
-        <title>Privacy Policy – GreenLedger</title>
+        <title>Privacy Policy – GreenLedger | Carbon Reporting Data Protection</title>
         <meta
           name="description"
-          content="Learn how GreenLedger protects your data and privacy. We're committed to transparency and security."
+          content="Learn how GreenLedger protects your carbon reporting data and privacy. We're committed to transparency, security, and GDPR compliance."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index, follow" />
+        <meta name="keywords" content="privacy policy, data protection, GDPR, carbon reporting privacy, cloud data security" />
+        <link rel="canonical" href="https://greenledger-landing.vercel.app/privacy" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Privacy Policy – GreenLedger" />
+        <meta property="og:description" content="Learn how GreenLedger protects your carbon reporting data and privacy." />
+        <meta property="og:url" content="https://greenledger-landing.vercel.app/privacy" />
+        <meta property="og:type" content="website" />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-b from-emerald-50 via-green-50 to-white">

@@ -6,13 +6,21 @@ export default function TermsPage() {
   return (
     <>
       <Head>
-        <title>Terms of Service – GreenLedger</title>
+        <title>Terms of Service – GreenLedger | Carbon Reporting Terms</title>
         <meta
           name="description"
-          content="Terms of Service for GreenLedger. Learn about our service terms, user responsibilities, and legal agreements."
+          content="Terms of Service for GreenLedger carbon reporting platform. Professional carbon emissions tracking and compliance reporting terms."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="robots" content="index, follow" />
+        <meta name="keywords" content="terms of service, carbon reporting terms, cloud emissions tracking terms, compliance" />
+        <link rel="canonical" href="https://greenledger-landing.vercel.app/terms" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Terms of Service – GreenLedger" />
+        <meta property="og:description" content="Terms of service for GreenLedger carbon reporting platform." />
+        <meta property="og:url" content="https://greenledger-landing.vercel.app/terms" />
+        <meta property="og:type" content="website" />
       </Head>
 
       <div className="min-h-screen bg-gradient-to-b from-emerald-50 via-green-50 to-white">

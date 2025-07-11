@@ -9,14 +9,75 @@ export default function LandingPage() {
   return (
     <TooltipProvider delayDuration={0}>
       <><Head>
-		  <title>GreenLedger – Instant Cloud Carbon Reporting</title>
+		  <title>GreenLedger – Instant Cloud Carbon Reporting | UK SDR & EU CSRD Compliance</title>
 		  <meta
 			  name="description"
-			  content="Effortless carbon emissions reporting for cloud-powered teams. Get UK SDR & EU CSRD compliant reports in minutes." />
+			  content="Effortless carbon emissions reporting for cloud-powered teams. Get UK SDR & EU CSRD compliant reports in minutes, not months. Connect AWS, GCP, Azure accounts instantly." />
 		  <meta name="viewport" content="width=device-width, initial-scale=1" />
-		  <meta name="keywords" content="carbon reporting, cloud emissions, SDR, CSRD, AWS, SaaS compliance" />
+		  <meta name="keywords" content="carbon reporting, cloud emissions, SDR, CSRD, AWS carbon footprint, GCP emissions, Azure sustainability, carbon compliance, ESG reporting, greenhouse gas reporting, cloud sustainability, carbon accounting" />
+		  
+		  {/* Open Graph / Facebook */}
+		  <meta property="og:type" content="website" />
+		  <meta property="og:url" content="https://greenledger-landing.vercel.app/" />
+		  <meta property="og:title" content="GreenLedger – Instant Cloud Carbon Reporting" />
+		  <meta property="og:description" content="Effortless carbon emissions reporting for cloud-powered teams. Get UK SDR & EU CSRD compliant reports in minutes." />
+		  <meta property="og:image" content="https://greenledger-landing.vercel.app/og-image.png" />
+		  <meta property="og:site_name" content="GreenLedger" />
+		  
+		  {/* Twitter */}
+		  <meta name="twitter:card" content="summary_large_image" />
+		  <meta name="twitter:url" content="https://greenledger-landing.vercel.app/" />
+		  <meta name="twitter:title" content="GreenLedger – Instant Cloud Carbon Reporting" />
+		  <meta name="twitter:description" content="Effortless carbon emissions reporting for cloud-powered teams. Get UK SDR & EU CSRD compliant reports in minutes." />
+		  <meta name="twitter:image" content="https://greenledger-landing.vercel.app/og-image.png" />
+		  
+		  {/* Additional SEO */}
+		  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+		  <meta name="googlebot" content="index, follow" />
+		  <meta name="author" content="GreenLedger" />
+		  <meta name="language" content="en" />
+		  <meta name="geo.region" content="GB" />
+		  <meta name="geo.placename" content="United Kingdom" />
+		  
+		  {/* Canonical URL */}
+		  <link rel="canonical" href="https://greenledger-landing.vercel.app/" />
+		  
+		  {/* Favicons */}
 		  <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
 		  <link rel="shortcut icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+		  
+		  {/* Structured Data */}
+		  <script type="application/ld+json">
+		  {JSON.stringify({
+			  "@context": "https://schema.org",
+			  "@type": "SoftwareApplication",
+			  "name": "GreenLedger",
+			  "description": "Effortless carbon emissions reporting for cloud-powered teams. Get UK SDR & EU CSRD compliant reports in minutes.",
+			  "url": "https://greenledger-landing.vercel.app/",
+			  "applicationCategory": "BusinessApplication",
+			  "operatingSystem": "Web",
+			  "offers": {
+				  "@type": "Offer",
+				  "price": "2.99",
+				  "priceCurrency": "USD",
+				  "priceValidUntil": "2025-12-31"
+			  },
+			  "provider": {
+				  "@type": "Organization",
+				  "name": "GreenLedger",
+				  "url": "https://greenledger-landing.vercel.app/"
+			  },
+			  "featureList": [
+				  "AWS carbon footprint tracking",
+				  "GCP emissions monitoring", 
+				  "Azure sustainability reporting",
+				  "UK SDR compliance",
+				  "EU CSRD compliance",
+				  "Real-time carbon monitoring",
+				  "Automated reporting"
+			  ]
+		  })}
+		  </script>
 	  </Head><div className="flex flex-col items-center w-full text-gray-800">
 			  {/* Hero */}
 			  <section className="w-full bg-gradient-to-b from-emerald-50 via-green-50 to-white pt-24 pb-32 px-6 text-center">
