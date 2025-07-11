@@ -1,8 +1,9 @@
 import Head from "next/head";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
+import { TooltipProvider } from "@/components/ui/tooltip";
 import { WaitlistForm } from "@/components/waitlist-form";
+import { CloudConnectionForm } from "@/components/cloud-connection-form";
 import { motion } from "framer-motion";
 
 export default function LandingPage() {
@@ -112,17 +113,11 @@ export default function LandingPage() {
 					  animate={{ opacity: 1, scale: 1 }}
 					  transition={{ delay: 0.9, duration: 0.4 }}
 				  >
-					  <Tooltip>
-						  <TooltipTrigger asChild>
-							  <Button size="lg" className="px-8 py-6 text-lg opacity-60 cursor-not-allowed tooltip-trigger bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white" disabled>
-								  Connect Cloud Account
-							  </Button>
-						  </TooltipTrigger>
-						  <TooltipContent side="bottom">
-							  <p className="font-medium">🚀 Coming Soon!</p>
-							  <p className="text-xs opacity-80">We&apos;re putting the finishing touches on this feature</p>
-						  </TooltipContent>
-					  </Tooltip>
+					  <CloudConnectionForm>
+						  <Button size="lg" className="px-8 py-6 text-lg bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white cursor-pointer">
+							  Connect Cloud Account
+						  </Button>
+					  </CloudConnectionForm>
 					  <WaitlistForm>
 						  <Button
 							  size="lg"
@@ -527,17 +522,11 @@ export default function LandingPage() {
 						  whileInView={{ opacity: 1, scale: 1 }}
 						  viewport={{ once: true }}
 					  >
-						  <Tooltip>
-							  <TooltipTrigger asChild>
-								  <Button size="lg" className="px-8 py-6 text-lg bg-white text-emerald-600 hover:bg-emerald-50 opacity-60 cursor-not-allowed tooltip-trigger" disabled>
-									  Start Free Trial
-								  </Button>
-							  </TooltipTrigger>
-							  <TooltipContent side="bottom">
-								  <p className="font-medium">🚀 Coming Soon!</p>
-								  <p className="text-xs opacity-80">We&apos;re putting the finishing touches on this feature</p>
-							  </TooltipContent>
-						  </Tooltip>
+						  <CloudConnectionForm>
+							  <Button size="lg" className="px-8 py-6 text-lg bg-white text-emerald-600 hover:bg-emerald-50 cursor-pointer">
+								  Start Free Trial
+							  </Button>
+						  </CloudConnectionForm>
 						  <WaitlistForm>
 							  <Button size="lg" variant="outline" className="px-8 py-6 text-lg border-2 border-white text-white hover:bg-white hover:text-emerald-600 transition-all duration-200 bg-white/10 backdrop-blur-sm cursor-pointer">
 								  Book a Demo
