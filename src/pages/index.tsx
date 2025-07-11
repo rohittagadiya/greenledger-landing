@@ -15,8 +15,8 @@ export default function LandingPage() {
 			  content="Effortless carbon emissions reporting for cloud-powered teams. Get UK SDR & EU CSRD compliant reports in minutes." />
 		  <meta name="viewport" content="width=device-width, initial-scale=1" />
 		  <meta name="keywords" content="carbon reporting, cloud emissions, SDR, CSRD, AWS, SaaS compliance" />
-		  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-		  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+		  <link rel="icon" href="/favicon.svg?v=2" type="image/svg+xml" />
+		  <link rel="shortcut icon" href="/favicon.svg?v=2" type="image/svg+xml" />
 	  </Head><div className="flex flex-col items-center w-full text-gray-800">
 			  {/* Hero */}
 			  <section className="w-full bg-gradient-to-b from-emerald-50 via-green-50 to-white pt-24 pb-32 px-6 text-center">
